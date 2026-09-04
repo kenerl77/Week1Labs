@@ -56,6 +56,7 @@ task.id === id ? { ...task, done: !task.done } : task
 )
 );
 }
+
 function handleDeleteTask(id) {
   setTasks(tasks.filter((t) => t.id !== id));
 }
@@ -113,6 +114,7 @@ title={item.title}
 done={item.done}
 
 onToggle={() => handleToggleTask(item.id)}
+onDelete={() => handleDeleteTask(item.id)}
 
 />
 )}
