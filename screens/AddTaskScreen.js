@@ -5,7 +5,6 @@ import { View, Text, TextInput, Button, StyleSheet, FlatList } from 'react-nativ
 import TaskCard from '../components/TaskCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function AddTaskScreen() {
-
 const [taskText, setTaskText] = useState('');
 const [tasks, setTasks] = useState([]);
 const [errorMessage, setErrorMessage] = useState('');
@@ -61,20 +60,15 @@ function handleDeleteTask(id) {
   setTasks(tasks.filter((t) => t.id !== id));
 }
 function handleAddTask() {
-if (taskText.trim() === '') {
-
-setErrorMessage('Please type a task before adding it.');
-
-return;
-}
-
-const newTask = { id: Date.now().toString(), title: taskText, done: false };
-
-setTasks([...tasks, newTask]);
-setTaskText('');
-setErrorMessage('');
-
-}
+    if (taskText.trim() === '') {
+      setErrorMessage('Please type a task before adding it.');
+      return;
+    }
+    const newTask = { id: Date.now().toString(), title: taskText, done: false };
+    setTasks([...tasks, newTask]);
+    setTaskText('');
+    setErrorMessage('');
+  }
 
 return (
 
